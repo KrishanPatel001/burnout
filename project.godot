@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Burnout"
-run/main_scene="uid://dtbdmhv8c26ws"
+run/main_scene="uid://cd5hsk4gvm8f"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

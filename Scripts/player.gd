@@ -7,8 +7,10 @@ extends CharacterBody2D
 @export var jumpForce : float = 200
 
 var moveInput : float
-var doubleJump : bool = true
+var doubleJump : bool = false
 var canDoubleJump : bool = false
+var kamehameha : bool = false
+var sonicSpeed : bool = false
 
 @onready var sprite : Sprite2D = $Sprite
 @onready var anim : AnimationPlayer = $AnimationPlayer
