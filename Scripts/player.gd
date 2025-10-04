@@ -7,8 +7,11 @@ extends CharacterBody2D
 @export var jumpForce : float = 200
 
 var moveInput : float
+var doubleJump : bool = true
+var canDoubleJump : bool = false
 
 @onready var sprite : Sprite2D = $Sprite
+@onready var anim : AnimationPlayer = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -22,5 +25,25 @@ func _physics_process(delta: float) -> void:
 		
 	if Input.is_action_pressed("jump") and is_on_floor():
 		velocity.y = -jumpForce
+		canDoubleJump = true
+	if doubleJump and Input.is_action_just_pressed("jump") and !is_on_floor() and canDoubleJump:
+		velocity.y = -jumpForce
+		canDoubleJump = false
 		
 	move_and_slide()
+	
+func _process(delta):
+	sprite.flip_h = velocity.x < 0
+	if global_position.y > 200:
+		restart()
+	_manage_animation()
+	
+func _manage_animation():
+	if moveInput != 0:
+		anim.play("move")
+	else:
+		anim.play("idle")
+		
+func restart():
+	global_position.x = 0
+	global_position.y = 0
