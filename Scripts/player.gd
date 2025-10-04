@@ -13,7 +13,7 @@ var moveInput : float
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	moveInput = Input.get_axis("move_left", "move_right")
+	moveInput = Input.get_axis("moveLeft", "moveRight")
 	
 	if moveInput != 0:
 		velocity.x = lerp(velocity.x, moveInput * moveSpeed, acceleration * delta)
