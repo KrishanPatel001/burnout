@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjynt3k26h07g"]
+
+[ext_resource type="Script" uid="uid://qg1eilpmnxl4" path="res://Scripts/menu.gd" id="1_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://c6d310guwwnel" path="res://Sprites/Backgrounds/Titlescreen1.png" id="2_xhh6f"]
+[ext_resource type="Texture2D" uid="uid://c2jff6dqlkgn2" path="res://Sprites/Backgrounds/Titlescreen2.png" id="3_cayip"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_158mb"]
+frames = 2
+frame_0/texture = ExtResource("2_xhh6f")
+frame_1/texture = ExtResource("3_cayip")
+frame_1/duration = 0.89
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+texture = SubResource("AnimatedTexture_158mb")
+expand_mode = 2
+stretch_mode = 2
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 292.0
+offset_right = 642.0
+offset_bottom = 368.0
+text = "Start"
+
+[node name="Info" type="Button" parent="."]
+layout_mode = 0
+offset_left = 483.0
+offset_top = 376.0
+offset_right = 643.0
+offset_bottom = 452.0
+text = "Info"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 465.0
+offset_right = 644.0
+offset_bottom = 541.0
+text = "Quit
+"
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_button_pressed"]
